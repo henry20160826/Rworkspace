@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1473905197063.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "73984E1A",
+    "lastKnownWriteTime" : -1935665893029698957,
+    "last_content_update" : 1473905197063,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "ess0i15huy",
+        "caption" : "zboy",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=zboy&cache_key=ess0i15huy",
+        "displayedObservations" : "100",
+        "environment" : "",
+        "object" : "zboy",
+        "totalObservations" : "100",
+        "variables" : "100"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
