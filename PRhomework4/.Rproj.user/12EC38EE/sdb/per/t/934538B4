@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#读取数据\noriginal_data<-read.table(\"E:\\\\graduated life\\\\pattern recognition\\\\data.txt\",header = T)\n#空缺的喜好数据按0.5处理，表示对这个喜好中立\nnoSexData<-original_data[,c(4,5)]#取出身高体重数据\n\n# #采用男生女生的平均身高体重作为初始的类中心\n# centers<-matrix(c(162.09,173.39,50.6,65.72),2,2)\n# #两个极端的数值作为中心\n# centers<-matrix(c(153,188,44,98),2,2)#分界线更靠近男生\n# #两类选择更男性化的值\n# centers<-matrix(c(180,188,80,98),2,2)#分界线更靠近男生\n# #两类选择更女性化的值\n# centers<-matrix(c(155,160,45,50),2,2)#和平均值结果类似\n# #两类选择中性的值\n# centers<-matrix(c(165,169,58,63),2,2)#和平均值结果类似\n\n#初始值对聚类的影响\n# centers<-matrix(c(162.09,173.39,153,188,180,188,155,160,165,169,50.6,65.72,44,98,80,98,45,50,58,63),10,2)\n# kccenters<-NULL\n# for(i in 0:4)\n# {\n# # print(centers[c(i*2+1,i*2+2),])\n# kc <- kmeans(noSexData, centers[c(i*2+1,i*2+2),])#分类模型训练\n# cluster_result=fitted(kc)#查看具体分类情况 \n# original_data[,2]<-original_data[,2]+1\n# table(original_data$sex, kc$cluster)#查看分类概括\n# #女生的数据更紧密，各种情况下聚类都是女生的类别数量多\n# #聚类结果可视化\n# plot(noSexData[c(1,2)], col = kc$cluster, pch = as.integer(original_data$sex))#不同的颜色代表不同的聚类结果，不同的形状代表训练数据集的原始分类情况。\n# kccenters<-rbind(kccenters,kc$centers[,c(1, 2)])\n# points(kc$centers[,c(1, 2)], col = 1:5, pch = 20, cex=4)#画出类的中心点\n# points(centers[c(i*2+1,i*2+2),], col = 1:5, pch = 18, cex=3)#画出类的中心点方形\n# }\n# print(kccenters)\n# plot(centers)\n# for(i in 0:4)\n# {\n#   points(centers[c(i*2+1,i*2+2),],col=1:2,pch=(0+i),cex=3)\n#   points(kccenters[c(i*2+1,i*2+2),],col=3:4,pch=(0+i),cex=3)\n# }\n\n#聚成多类\nkc <- kmeans(noSexData,5)#分类模型训练\ncluster_result=fitted(kc)#查看具体分类情况 \noriginal_data[,2]<-original_data[,2]+1\ntable(original_data$sex, kc$cluster)#查看分类概括\n#女生的数据更紧密，各种情况下聚类都是女生的类别数量多\n#聚类结果可视化\nplot(noSexData[c(1,2)], col = kc$cluster, pch = as.integer(original_data$sex))#不同的颜色代表不同的聚类结果，不同的形状代表训练数据集的原始分类情况。\nkccenters<-rbind(kccenters,kc$centers[,c(1, 2)])\npoints(kc$centers[,c(1, 2)], col = 1:5, pch = 20, cex=4)#画出类的中心点\n# points(centers[c(i*2+1,i*2+2),], col = 1:5, pch = 18, cex=3)#画出类的中心点方形\n\n\n\n",
+    "created" : 1479294822864.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "647199486",
+    "id" : "934538B4",
+    "lastKnownWriteTime" : 1479302340,
+    "last_content_update" : 1479302340640,
+    "path" : "G:/Rworkspace/PRhomework4/C-means.R",
+    "project_path" : "C-means.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

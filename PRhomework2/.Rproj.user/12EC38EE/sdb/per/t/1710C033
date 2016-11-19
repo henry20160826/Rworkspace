@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#SVM\n#install.packages(\"e1071\") \nlibrary(e1071)\nlibrary(caret)\nlibrary(ROCR)\nprintPredictResult<-function()\n{\n  print(confusionMatrix(bpred,trueSex,positive = \"1\"))\n  # 画出ROC曲线\n  pred <- prediction(pred,trueSex)\n  perf <- performance(pred,\"tpr\",\"fpr\")\n  #男生女生按数量分开时auc值变化不大\n  auc<-performance(pred,\"auc\")\n  print(auc)\n  plot(perf,colorize=TRUE)\n}\n#读取数据\nd<-read.table(\"E:\\\\graduated life\\\\pattern recognition\\\\data.txt\",header = T)\n#使用$按列名取出data.frame中的某一列，支持中文\n\n# # #训练集为全集\n# x <- d[, c (4,5,7,8,9)]\n# y <- as.factor(d$sex)\n# # 训练svm模型\n# model <- svm(x,y, kernel = \"linear\", cost = 1, scale = TRUE)\n# # print(model)\n# pred<-predict(model,x,decision.values = TRUE)\n# pred<-attr(pred,\"decision.values\")\n# # print(pred)\n# bpred<-predict(model,x,decision.values = FALSE)\n# # print(bpred)\n# trueSex<-y\n# printPredictResult()\n\n# #radial 0.9329\n# #sigmoid 0.8523\n# #polynomial 0.9329\n# #linear 0.9195\n\n#交叉验证\nktime=10\nfold=createFolds(d$num,k=ktime)\npred=NULL\nbpred<-NULL\ntrueSex<-NULL\nfor(i in 1:ktime)\n{\n  x<-d[-fold[[i]],c (4,5,7,8,9)]\n  y<-as.factor(d[-fold[[i]],2])\n  # 训练svm模型\n  model <- svm(x,y, data = inputData, kernel = \"polynomial\", cost = 10, scale = TRUE)\n  # print(model)\n  #预测模型\n  x<-d[fold[[i]],c (4,5,7,8,9)]\n  y<-as.factor(d[fold[[i]],2])\n  trueSex<-c(trueSex,y)\n  temppred<-predict(model,x,decision.values = TRUE)\n  temppred<-attr(temppred,\"decision.values\")\n  pred<-c(pred,temppred)\n  # print(pred)\n  tempbpred<-as.numeric(predict(model,x,decision.values = FALSE))\n  bpred<-c(bpred,tempbpred)\n  # print(bpred)\n}\nbpred<-as.factor(bpred-1)\ntrueSex<-as.factor(trueSex-1)\nprintPredictResult()\n#radial 0.8591\n#linear 0.9128\n#polynomial 0.9396\n#sigmoid 0.8255\n\n\n\n#交叉验证\n#共149个人,分成5组进行交叉验证\n#增加随机数列，排序进行分组，从而保证随机分组\n# r=sample(0:300,149)\n# adata<-data.frame(d,r)\n# adata<-adata[order(adata[,11]),]\n# m=1\n# #进行5次验证\n# for(i in 0:4)\n# {\n#   #取出训练集与测试集\n#   if(i!=4)\n#   {\n#     testSet<-adata[(i*30+1):(i*30+30),]\n#   }\n#   else\n#   {\n#     testSet<-adata[(i*30+1):149,]\n#   }\n#   if(i==4)\n#   {\n#     train<-adata[1:(i*30),]\n#   }\n#   else if(i==0)\n#   {\n#     train<-adata[(i*30+31):149,]\n#   }\n#   else\n#   {\n#     a=1:(i*30)\n#     b=(i*30+31):149\n#     a<-c(a,b)\n#     train<-adata[a,]\n#   }\n#   #训练模型\n#   inputData <- data.frame(train[, c (4,5,7,8,9)], response = as.factor(train$性别))\n#   # radial SVM\n#   svmfit <- svm(response ~ ., data = inputData, kernel = \"radial\", cost = 10, scale = FALSE) # radial svm, scaling turned OFF\n#   #使用testSet进行测试\n#   test<-data.frame(testSet[, c (4,5,7,8,9)])\n#   p=predict(svmfit,test)\n#   # print(p)\n#   # print(testSet$性别)\n#   #取出测试集真实性别\n#   idata=testSet$性别\n#   #比较测试数据与真实数据\n#   compareTable <- table (idata, p)  # tabulate\n#   # print(compareTable)\n#   #保存每次的平均错误率\n#   m[i+1]=mean(idata!= p)\n#   print(m[i+1])\n# }\n# #计算总体平均错误率\n# mean(m)\n# #几次运行的最终结果\n# #radial\n# #全部训练时6.04%\n# #16.07%\n# #18.73%\n# #17.51%\n# #14.11%\n# #是否归一化对结果影响不大\n# #sigmod\n# #全部训练时14.77%\n# #23.40%\n# #23.47%\n# #23.54%\n# #23.47%\n# #linear\n# #全部训练时7.38%\n# #8.69%\n# #10.05%\n# #8.74%\n# #10.76%",
+    "created" : 1476964639440.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4074807697",
+    "id" : "1710C033",
+    "lastKnownWriteTime" : 1476696671,
+    "last_content_update" : 1476696671,
+    "path" : "G:/Rworkspace/PRhomework2/svm.R",
+    "project_path" : "svm.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

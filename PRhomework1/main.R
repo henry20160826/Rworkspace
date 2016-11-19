@@ -59,11 +59,13 @@ getMLEo2<-function()
 }
 boyHW<-boy[,4:5]
 uboy<-colMeans(boyHW)
-oboy<-(t(boyHW)-uboy)%*%t((t(boyHW)-uboy))/boyNum
+# oboy<-(t(boyHW)-uboy)%*%t((t(boyHW)-uboy))/boyNum
+oboy<-cov(boyHW)
 
 girlHW<-girl[,4:5]
 ugirl<-colMeans(girlHW)
-ogirl<-(t(girlHW)-ugirl)%*%t((t(girlHW)-ugirl))/girlNum
+# ogirl<-(t(girlHW)-ugirl)%*%t((t(girlHW)-ugirl))/girlNum
+ogirl<-cov(girlHW)
 
 #正态分布的贝叶斯估计
 getBayesE<-function(N,e,Dx,u,o2)

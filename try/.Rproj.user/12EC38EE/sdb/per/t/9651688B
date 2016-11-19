@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# library(rpart)\n# print(kyphosis)\n# is.data.frame(kyphosis)\n# print(kyphosis)\n# fit <- rpart(Kyphosis ~ Age + Number + Start, data = kyphosis)\n# fit2 <- rpart(Kyphosis ~ Age + Number + Start, data = kyphosis,\n#               parms = list(prior = c(.65,.35), split = \"information\"))\n# fit3 <- rpart(Kyphosis ~ Age + Number + Start, data = kyphosis,\n#               control = rpart.control(cp = 0.05))\n# par(mfrow = c(1,2), xpd = NA) # otherwise on some devices the text is clipped\n# plot(fit)\n# text(fit, use.n = TRUE)\n# plot(fit2)\n# text(fit2, use.n = TRUE)\ni<-10:1",
+    "created" : 1476608917184.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "966851231",
+    "id" : "9651688B",
+    "lastKnownWriteTime" : 1477208410,
+    "last_content_update" : 1477208410513,
+    "path" : "G:/Rworkspace/try/rpart.R",
+    "project_path" : "rpart.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

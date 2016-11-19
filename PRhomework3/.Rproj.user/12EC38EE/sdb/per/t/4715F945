@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "accuracy<-c(0.8993,0.8926,0.7919,0.8859,0.8859,0.8591)\nplot(type='o',accuracy,ylim=c(0,1),main=\"特征选取与分类准确率的关系\",xlab=\"选取前n个特征值\")\ntext(accuracy,paste(format(accuracy,digits = 3)),pos = 3)\n# plot(type='o',accuracy,main=\"特征选取与分类准确率的关系\",xlab=\"选取前n个特征值\")\n\naccuracy<-c(0.8859,0.8859,0.8993,0.9128,0.9262,0.9195)\nplot(type='o',accuracy,ylim=c(0,1),main=\"特征选取与分类准确率的关系\",xlab=\"选取前n个特征值\")\ntext(accuracy,paste(format(accuracy,digits = 3)),pos = 1)",
+    "created" : 1478260376976.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3884674126",
+    "id" : "4715F945",
+    "lastKnownWriteTime" : 1478260976,
+    "last_content_update" : 1478260976180,
+    "path" : "G:/Rworkspace/PRhomework3/try.R",
+    "project_path" : "try.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# http://blog.csdn.net/sherrymi/article/details/38341185\n#读取数据\noriginal_data<-read.table(\"E:\\\\graduated life\\\\pattern recognition\\\\data.txt\",header = T)\n#空缺的喜好数据按0.5处理，表示对这个喜好中立\n# d <- dist(original_data[,c(4,5,7,8,9,10)])\nd <- dist(original_data[,c(4,5)])\nstr<-c(\"single\",\"complete\",\"median\",\"mcquitty\",\"average\",\"centroid\",\"ward\")\n\nfor(i in 1:7)\n{\n  hc1 <- hclust(d,str[i])\n  plot(hc1,hang = -1)\n}\n#hang小于0时，树将从底部画起。\n#type = c(\"rectangle\", \"triangle\"),默认树形图是方形的。另一个是三角形。\n#horiz  TRUE 表示竖着放，FALSE表示横着放。\n",
+    "created" : 1479300066724.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2218827627",
+    "id" : "D495E2BF",
+    "lastKnownWriteTime" : 1478946871,
+    "last_content_update" : 1478946871,
+    "path" : "G:/Rworkspace/PRhomework4/分级聚类.R",
+    "project_path" : "分级聚类.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

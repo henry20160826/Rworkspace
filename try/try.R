@@ -1,9 +1,63 @@
-# x<-y<-seq(-4,4,length=20)
-# f<-function(x,y){(exp(-0.5*x^2-0.5*y^2))/(2*pi)}
-# z<-outer(x,y,f)
-# z
-# persp(x,y,z,theta=45,phi=25,col='lightblue')
+library("e1071")
+data(iris)
+attach(iris)
+#分类模型
+## classification mode
+# alternatively the traditional interface:
+x <- subset(iris, select = -Species)
+y <- Species
+model <- svm(x, y)
+# print(model)
+# summary(model)
+# test with train data
+pred <- predict(model, x)
+# Check accuracy:
+table(pred, y)
+# compute decision values and probabilities:
+pred <- predict(model, x, decision.values = TRUE)
+# print(pred)
+# attr(pred, "decision.values")[1:4,]
+# # visualize (classes by color, SV by crosses):
+# #将高维空间中的距离映射到二维空间中画出
+# plot(cmdscale(dist(iris[,-5])),
+#   col = as.integer(iris[,5]),#制定画图颜色
+#   pch = c("o","+")[1:150 %in% model$index + 1])#制定画图符号
+# m<-dist(iris[,-5])# 计算每个点与其他各点的距离个数为N*(N-1)/2
 
-library(plotly)
-# volcano is a numeric matrix that ships with R
-plot_ly(z = volcano, type = "surface")
+# # try regression mode on two dimensions
+# # create data
+# x <- seq(0.1, 5, by = 0.05)
+# y <- log(x) + rnorm(x, sd = 0.2)
+# # estimate model and predict input values
+# m <- svm(x, y)
+# new <- predict(m, x)
+# # visualize
+# plot(x, y)
+# points(x, log(x), col = 2)
+# points(x, new, col = 4)
+
+## density-estimation
+# create 2-dim. normal with rho=0:
+# X <- data.frame(a = rnorm(1000), b = rnorm(1000))
+# attach(X)#使得X中的列能够被当做变量直接使用
+# # traditional way:
+# m <- svm(X, gamma = 0.1)
+# # formula interface:
+# m <- svm(~., data = X, gamma = 0.1)
+# # or:
+# m <- svm(~ a + b, gamma = 0.1)
+# # test:
+# newdata <- data.frame(a = c(0, 4), b = c(0, 4))
+# predict (m, newdata)
+# # visualize:
+# plot(X, col = 1:1000 %in% m$index + 1, xlim = c(-5,5), ylim=c(-5,5))
+# points(newdata, pch = "+", col = 2, cex = 5)
+# # weights: (example not particularly sensible)
+# i2 <- iris
+# levels(i2$Species)[3] <- "versicolor"
+# summary(i2$Species)
+# wts <- 100 / table(i2$Species)
+# wts
+# m <- svm(Species ~ ., data = i2, class.weights = wts)
+
+

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(\"e1071\")\ndata(iris)\nattach(iris)\n#分类模型\n## classification mode\n# alternatively the traditional interface:\nx <- subset(iris, select = -Species)\ny <- Species\nmodel <- svm(x, y)\n# print(model)\n# summary(model)\n# test with train data\npred <- predict(model, x)\n# Check accuracy:\ntable(pred, y)\n# compute decision values and probabilities:\npred <- predict(model, x, decision.values = TRUE)\n# print(pred)\n# attr(pred, \"decision.values\")[1:4,]\n# # visualize (classes by color, SV by crosses):\n# #将高维空间中的距离映射到二维空间中画出\n# plot(cmdscale(dist(iris[,-5])),\n#   col = as.integer(iris[,5]),#制定画图颜色\n#   pch = c(\"o\",\"+\")[1:150 %in% model$index + 1])#制定画图符号\n# m<-dist(iris[,-5])# 计算每个点与其他各点的距离个数为N*(N-1)/2\n\n# # try regression mode on two dimensions\n# # create data\n# x <- seq(0.1, 5, by = 0.05)\n# y <- log(x) + rnorm(x, sd = 0.2)\n# # estimate model and predict input values\n# m <- svm(x, y)\n# new <- predict(m, x)\n# # visualize\n# plot(x, y)\n# points(x, log(x), col = 2)\n# points(x, new, col = 4)\n\n## density-estimation\n# create 2-dim. normal with rho=0:\n# X <- data.frame(a = rnorm(1000), b = rnorm(1000))\n# attach(X)#使得X中的列能够被当做变量直接使用\n# # traditional way:\n# m <- svm(X, gamma = 0.1)\n# # formula interface:\n# m <- svm(~., data = X, gamma = 0.1)\n# # or:\n# m <- svm(~ a + b, gamma = 0.1)\n# # test:\n# newdata <- data.frame(a = c(0, 4), b = c(0, 4))\n# predict (m, newdata)\n# # visualize:\n# plot(X, col = 1:1000 %in% m$index + 1, xlim = c(-5,5), ylim=c(-5,5))\n# points(newdata, pch = \"+\", col = 2, cex = 5)\n# # weights: (example not particularly sensible)\n# i2 <- iris\n# levels(i2$Species)[3] <- \"versicolor\"\n# summary(i2$Species)\n# wts <- 100 / table(i2$Species)\n# wts\n# m <- svm(Species ~ ., data = i2, class.weights = wts)\n\n\n",
+    "created" : 1476109638621.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1157772638",
+    "id" : "7181EC1",
+    "lastKnownWriteTime" : 1476591366,
+    "last_content_update" : 1476591366679,
+    "path" : "G:/Rworkspace/try/try.R",
+    "project_path" : "try.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

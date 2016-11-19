@@ -1,0 +1,10 @@
+{
+    "dialog-state" : {
+        "caseSensitive" : false,
+        "filePatterns" : [
+        ],
+        "path" : "G:/Rworkspace/PRhomework2",
+        "query" : "w2 %*% xo",
+        "regex" : false
+    }
+}
